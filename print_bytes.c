@@ -24,14 +24,8 @@ static char *hexs[] = {
 static unsigned char mask1 = 0xF0;
 static unsigned char mask2 = 0x0F;
 
-static void print_hex(unsigned char v) {
-    printf("%.2X", v);
-}
-
-static void print_bin(unsigned char v) {
-    printf("%s ", hexs[(v & mask1) >> (CHAR_BIT / 2)]);
-    printf("%s ", hexs[v & mask2]);
-}
+static void print_hex(unsigned char v);
+static void print_bin(unsigned char v);
 
 void print_bytes(BYTE_PTR start, int len, int reverse_byte) {
     fputs("0x", stdout);
@@ -113,6 +107,15 @@ void print_double_bytes(double x, int reverse_byte) {
 
 void print_ptr_bytes(void *x, int reverse_byte) {
     print_bytes((BYTE_PTR)&x, sizeof(void *), reverse_byte);
+}
+
+static void print_hex(unsigned char v) {
+    printf("%.2X", v);
+}
+
+static void print_bin(unsigned char v) {
+    printf("%s ", hexs[(v & mask1) >> (CHAR_BIT / 2)]);
+    printf("%s ", hexs[v & mask2]);
 }
 
 int main(int argc, char *argv[]) {
