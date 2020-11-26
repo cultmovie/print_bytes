@@ -126,4 +126,5 @@ int main(int argc, char *argv[]) {
     print_ulong_bytes((unsigned long)x, 1);
     print_ptr_bytes(&x, 0);
     print_ptr_bytes(&x, 1);
+    print_bytes("abcd", 4, 0);
 }
